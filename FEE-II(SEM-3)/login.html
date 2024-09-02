@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Availability Form</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .availability-form {
+            background-color: #47D1D2;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 30px auto;
+        }
+
+        .form-control {
+            background-color: #47D1D2;
+            border: 1px solid #fff;
+            color: #fff;
+        }
+
+        .form-control::placeholder {
+            color: #fff;
+        }
+
+        .form-label {
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .btn-custom {
+            background-color: #FFBD26;
+            font-weight: bold;
+            color: #fff;
+            width: 100%;
+            border: none;
+            padding: 10px;
+            border-bottom: 4px solid #F8A426;
+            cursor: pointer;
+        }
+
+        .btn-custom:hover {
+            background-color: #FAC778;
+        }
+
+        .icon {
+            position: absolute;
+            margin-top: 11px;
+            left: 15px;
+        }
+
+        .input-group {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h4 class="text-center text-uppercase mb-4" style="color: #333;">Wherever you go, make yourself at home</h4>
+    <form class="availability-form" id="availabilityForm">
+        <div class="mb-3 input-group">
+            <span class="fa fa-map-marker-alt icon"></span>
+            <input type="text" class="form-control ps-5" id="cities" name="cities" placeholder="Select location" required>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="start" class="form-label">Check-In Date</label>
+                <input type="date" class="form-control" id="start" name="trip" min="2024-01-01" max="2024-12-31" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="end" class="form-label">Check-Out Date</label>
+                <input type="date" class="form-control" id="end" name="trip" min="2024-01-02" max="2024-12-31" required>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="adults-number" class="form-label">Adults</label>
+                <input list="adults" class="form-control" id="adults-number" name="adults-number" placeholder="Select number of adults" required>
+                <datalist id="adults">
+                    <option value="1 adult">
+                    <option value="2 adults">
+                    <option value="3 adults">
+                    <option value="+3 adults">
+                </datalist>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="children-number" class="form-label">Children</label>
+                <input list="children" class="form-control" id="children-number" name="children-number" placeholder="Select number of children" required>
+                <datalist id="children">
+                    <option value="No children">
+                    <option value="1">
+                    <option value="2">
+                    <option value="3">
+                </datalist>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-custom">Start Search</button>
+    </form>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.1/js/bootstrap.min.js"></script>
+<script>
+    // Form validation script
+    document.getElementById('availabilityForm').addEventListener('submit', function (e) {
+        let form = e.target;
+        if (!form.checkValidity()) {
+            e.preventDefault();
+            e.stopPropagation();
+            alert('Please fill out all required fields.');
+        }
+        form.classList.add('was-validated');
+    }, false);
+</script>
+</body>
+</html>
